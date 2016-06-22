@@ -1,0 +1,22 @@
+<html>
+<body>
+<canvas height="500" width="500" id="main" style="border: 1px solid #000;"></canvas>
+<script>
+window.String_pointerify = function String_pointerify(str) {
+  return allocate(intArrayFromString(str), 'i8', ALLOC_NORMAL);
+}
+window.globalCanvas = document.querySelector('#main');
+window.globalCtx = globalCanvas.getContext('2d');
+window.globalColor = '#000000';
+</script>
+<script src="a.out.js"></script>
+<script>
+loop = Module.cwrap('loop', 'number', []);
+function tick() {
+    loop();
+    requestAnimationFrame(tick);
+}
+requestAnimationFrame(tick);
+</script>
+</body>
+</html>
